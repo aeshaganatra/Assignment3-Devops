@@ -3,12 +3,12 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'mvn clean package'
+                bat 'mvn clean package'
             }
         }
         stage('Deploy') {
             steps {
-                bat 'start java -jar target/demo.jar'
+                bat 'start C:\\Program Files\\Java\\jdk-17\\bin\\java.exe -jar target/demo.jar'
             }
         }
     }
