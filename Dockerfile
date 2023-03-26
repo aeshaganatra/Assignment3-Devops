@@ -1,2 +1,13 @@
-From tomcat:8-jre8
-COPY ./target/demo.jar /usr/local/tomcat/webapps
+# Build stage
+#
+FROM maven:3.6.0-jdk-11-slim AS build
+COPY pom.xml /home/app
+RUN mvn -f /home/app/pom.xml clean package
+
+#
+# Package stage
+#
+FROM openjdk:11-jre-slim
+COPY --from=build demo.jar /usr/local/lib/demo.jar
+EXPOSE 8084
+ENTRYPOINT ["java","-jar","/usr/local/lib/demo.jar"]
