@@ -8,7 +8,7 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                bat 'start C:\\Program Files\\Java\\jdk-17\\bin\\java.exe -jar target/demo.jar'
+                bat 'D:\\download\\apache-maven-3.9.1-bin\\apache-maven-3.9.1\\bin\\mvn clean install'
             }
         }
     }
