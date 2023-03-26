@@ -1,16 +1,14 @@
 pipeline {
     agent any
-    
     stages {
-        stage('Checkout') {
-            steps {
-                checkout scm
-            }
-        }
-        
         stage('Build') {
             steps {
-                sh 'mvn clean install'
+                sh 'mvn clean package'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                bat 'start java -jar target/demo.jar'
             }
         }
     }
