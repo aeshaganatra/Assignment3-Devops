@@ -13,7 +13,7 @@ pipeline {
         }
         stage('Docker build') {
             steps {
-                bat 'docker build -f Dockerfile -t aeshaganatra4199/demo_image .'
+                bat 'docker build -f Dockerfile -t demo_image .'
             }
         }
         stage('Login') {
@@ -21,10 +21,19 @@ pipeline {
                 bat 'echo %DOCKERHUB_CREDENTIALS_PSW% ^| docker login -u %DOCKERHUB_CREDENTIALS_USR% --password-stdin'
             }
         }
+        stage('Tag') {
+            steps {
+                bat 'docker tag demo_image aeshaganatra4199/dockerhub:demo_image'
+            }
+        }
         stage('Push') {
             steps {
-                bat 'docker tag demo_image:latest aeshaganatra4199/dockerhub:demo_image'
                 bat 'docker push aeshaganatra4199/dockerhub:demo_image'
+            }
+        }
+        post {
+            always {
+                bat 'docker logout'
             }
         }
     }
