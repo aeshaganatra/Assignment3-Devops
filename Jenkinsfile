@@ -31,10 +31,10 @@ pipeline {
                 bat 'docker push aeshaganatra4199/dockerhub:demo_image'
             }
         }
-        post {
-            always {
-                bat 'docker logout'
-            }
-        }
     }
+    post {
+        always {
+            bat 'docker logout'
+           }
+     }
 }
