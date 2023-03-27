@@ -23,12 +23,12 @@ pipeline {
         }
         stage('Tag') {
             steps {
-                bat 'docker tag demo_image aeshaganatra4199/dockerhub:demo_image'
+                bat 'docker tag demoimage aeshaganatra4199/dockerhub:demo_image'
             }
         }
         stage('Push') {
             steps {
-                bat 'docker push aeshaganatra4199/dockerhub:demo_image'
+                bat 'docker push aeshaganatra4199/dockerhub:demoimage'
             }
         }
     }
