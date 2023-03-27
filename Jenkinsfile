@@ -13,7 +13,7 @@ pipeline {
         }
         stage('Docker build') {
             steps {
-                bat 'docker build -f Dockerfile -t demo_image .'
+                bat 'docker build -f Dockerfile -t aeshaganatra4199/demo_image .'
             }
         }
         stage('Login') {
