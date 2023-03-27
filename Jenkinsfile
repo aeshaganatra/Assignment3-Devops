@@ -23,7 +23,8 @@ pipeline {
         }
         stage('Push') {
             steps {
-                bat 'docker push aeshaganatra4199/demo_image'
+                bat 'docker tag demo_image:latest aeshaganatra4199/dockerhub:demo_image'
+                bat 'docker push aeshaganatra4199/dockerhub:demo_image'
             }
         }
     }
