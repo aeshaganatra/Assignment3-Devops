@@ -23,7 +23,7 @@ pipeline {
         }
         stage('Push') {
             steps {
-                'docker push demo_image'
+                bat 'docker push demo_image'
             }
         }
     }
