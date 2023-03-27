@@ -16,19 +16,19 @@ pipeline {
                 bat 'docker build -f Dockerfile -t demo_image .'
             }
         }
-        stage('Login') {
+        stage('Docker Login') {
             steps {
                 bat 'echo %DOCKERHUB_CREDENTIALS_PSW% ^| docker login -u %DOCKERHUB_CREDENTIALS_USR% --password-stdin docker.io'
             }
         }
-        stage('Tag') {
+        stage('Add Image Tag') {
             steps {
-                bat 'docker tag demoimage aeshaganatra4199/dockerhub:demo_image'
+                bat 'docker tag demo_image aeshaganatra4199/dockerhub:demo_image'
             }
         }
-        stage('Push') {
+        stage('Push to Docker Hub') {
             steps {
-                bat 'docker push aeshaganatra4199/dockerhub:demoimage'
+                bat 'docker push aeshaganatra4199/dockerhub:demo_image'
             }
         }
     }
